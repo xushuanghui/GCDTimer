@@ -33,7 +33,7 @@ static NSString * const myTimer = @"MyTimer";
      *                                        block:(void (^)(NSTimer *timer))block;
      */
 
-    //    [self demoNSTimerAfteriOS10]; //123
+    //    [self demoNSTimerAfteriOS10]; //master
 }
 
 - (void)demoNSTimer {
