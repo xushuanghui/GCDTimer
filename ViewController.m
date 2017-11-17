@@ -23,7 +23,7 @@ static NSString * const myTimer = @"MyTimer";
     [super viewDidLoad];
     
     /* 启动一个timer，每隔2秒执行一次。每次执行打印一条log记录，在执行到n==10的时候cancel掉timer。 */
-    //    [self demoNSTimer];
+    //    [self demoNSTimer];//branch
     [self demoGCDTimer];
     
     /*
