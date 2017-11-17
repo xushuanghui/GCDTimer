@@ -12,6 +12,7 @@
 @interface ViewController ()
 @property (nonatomic, strong) MD_GCDTimerManager *timerManager;
 @property (nonatomic, strong) NSTimer *timer;
+@property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @end
 
 static NSString * const myTimer = @"MyTimer";
@@ -31,7 +32,7 @@ static NSString * const myTimer = @"MyTimer";
      *                                      repeats:(BOOL)repeats
      *                                        block:(void (^)(NSTimer *timer))block;
      */
-    //    [self demoNSTimerAfteriOS10];
+    //    [self demoNSTimerAfteriOS10]; //123
 }
 
 - (void)demoNSTimer {
@@ -45,7 +46,7 @@ static NSString * const myTimer = @"MyTimer";
 - (void)demoGCDTimer {
     __weak typeof(self) weakSelf = self;
     [[MD_GCDTimerManager sharedInstance] scheduledDispatchTimerWithName:myTimer
-                                                           timeInterval:2.0
+                                                           timeInterval:1.0
                                                                   queue:nil
                                                                 repeats:YES
                                                            actionOption:AbandonPreviousAction
@@ -67,11 +68,14 @@ static NSString * const myTimer = @"MyTimer";
 - (void)doSomething {
     static NSUInteger n = 0;
     NSLog(@"myTimer runs %lu times!", (unsigned long)n++);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.numberLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)n++];
+    });
     
-    if (n >= 10) {
-        [self.timer invalidate];
-        [[MD_GCDTimerManager sharedInstance] cancelTimerWithName:myTimer];
-    }
+//    if (n >= 10) {
+//        [self.timer invalidate];
+//        [[MD_GCDTimerManager sharedInstance] cancelTimerWithName:myTimer];
+//    }
 }
 
 
