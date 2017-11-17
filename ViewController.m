@@ -32,8 +32,8 @@ static NSString * const myTimer = @"MyTimer";
      *                                      repeats:(BOOL)repeats
      *                                        block:(void (^)(NSTimer *timer))block;
      */
-    //    [self demoNSTimerAfteriOS10]; //123 4
-    //098
+
+    //    [self demoNSTimerAfteriOS10]; //123
 }
 
 - (void)demoNSTimer {
